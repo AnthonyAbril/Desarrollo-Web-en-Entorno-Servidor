@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Hola Mundo De Nuevo</title>
+    <title>Hola Mundo Otra Vez</title>
 </head>
 <body>
     <h1>Este es mi primer programa local</h1>
