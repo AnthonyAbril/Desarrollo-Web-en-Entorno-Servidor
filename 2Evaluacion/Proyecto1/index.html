@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Inserción de datos</title>
-</head>
-    <body>
-        <div>
-            <h1>Insertar un registro</h1>
-            <form method="POST" action="borrar.php">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre"><br>
-                <label for="telefono">Teléfono</label>
-                <input type="text" name="telefono"><br>
-                <input type="submit" value="Insertar">
-            </form>
-        </div>
-   </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserción de datos</title>
+  </head>
+  <body>
+    <div>
+      <h1>Insertar un registro</h1>
+      <form method="POST" action="borrar.php">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" /><br />
+        <label for="telefono">Teléfono</label>
+        <input type="text" name="telefono" /><br />
+        <input type="submit" value="Insertar" />
+      </form>
+    </div>
+
+    <div>
+      <!-- SALDRA EL LISTADO DE PRODUCTOS -->
+      <select name="opciones" id="opciones">
+        <option value="opcion1">Sable Laser</option>
+        <option value="opcion2">Anillo</option>
+        <option value="opcion3">Gafas</option>
+      </select>
+    </div>
+  </body>
 </html>
