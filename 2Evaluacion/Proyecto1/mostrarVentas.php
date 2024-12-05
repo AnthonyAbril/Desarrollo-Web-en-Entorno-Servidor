@@ -9,7 +9,7 @@
     $ssql = "SELECT `compras`.id_cliente,`clientes`.nombre,`compras`.fecha 
     FROM `compras` 
     INNER JOIN `clientes` ON `compras`.id_cliente = `clientes`.id_cliente 
-    WHERE `id_producto`=4 
+    WHERE `id_producto`=$productoSeleccionado 
     ORDER BY `id_cliente` ASC";
 
     echo $ssql;
