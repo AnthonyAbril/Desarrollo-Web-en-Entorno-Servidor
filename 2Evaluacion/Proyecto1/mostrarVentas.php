@@ -7,12 +7,11 @@
     $productoSeleccionado = isset($_POST['productos']) ? $_POST['productos'] : '*';
 
     //Creamos la sentencia SQL
-    $ssql = "SELECT `id_cliente`,`fecha` FROM `compras` WHERE `id_producto`=$productoSeleccionado";
+    $ssql = "SELECT `id_cliente`,`fecha` FROM `compras` WHERE `id_producto`=$productoSeleccionado ORDER BY `id_cliente` ASC";
     echo $ssql;
 
     // Ejecutamos la sentencia SQL
     $result = $conexion->query($ssql);
-
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +28,15 @@
             <th>id cliente</th>
             <th>fecha</th>
         </tr>
-
+        
         <?php
+
         //Mostramos los registros
-        while ($row = $result->fetch_array()){
+        while ($row = $result->fetch_array()) {
             echo '<tr><td>' . $row["id_cliente"] . '</td>';
             echo '<td>' . $row["fecha"] . '</td></tr>';
         }
+
         ?>
 
     </table>
