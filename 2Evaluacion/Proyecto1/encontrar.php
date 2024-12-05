@@ -16,13 +16,19 @@
     <title>Document</title>
 </head>
 <body>
-    <select name="productos" id="productos">
-        <?php
-            //recorre los registros
-            while ($row = $result->fetch_array()) {
-                echo '<option value="' . $row["id_producto"] . '">' . $row["nombre"] . '</option>';
-            }
-        ?>
-    </select>
+    <form method="POST" action="mostrarVentas.php">
+        <fieldset>
+            <legend>Listado de Producto</legend>
+            <select name="productos" id="productos">
+                <?php
+                    //recorre los registros
+                    while ($row = $result->fetch_array()) {
+                        echo '<option value="' . $row["id_producto"] . '">' . $row["nombre"] . '</option>';
+                    }
+                ?>
+            </select>
+            <button type="submit">Mostrar Ventas</button>
+        </fieldset>
+    </form>
 </body>
 </html>
