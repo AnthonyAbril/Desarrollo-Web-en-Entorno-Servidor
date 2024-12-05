@@ -6,8 +6,12 @@
     // Recibimos los datos del formulario o método alternativo
     $productoSeleccionado = isset($_POST['productos']) ? $_POST['productos'] : '*';
 
-    //Creamos la sentencia SQL
-    $ssql = "SELECT `id_cliente`,`fecha` FROM `compras` WHERE `id_producto`=$productoSeleccionado ORDER BY `id_cliente` ASC";
+    $ssql = "SELECT `compras`.id_cliente,`clientes`.nombre,`compras`.fecha 
+    FROM `compras` 
+    INNER JOIN `clientes` ON `compras`.id_cliente = `clientes`.id_cliente 
+    WHERE `id_producto`=4 
+    ORDER BY `id_cliente` ASC";
+
     echo $ssql;
 
     // Ejecutamos la sentencia SQL
@@ -22,23 +26,23 @@
  <title>Resultados Consulta</title>
 </head>
 <body>
-    <h1>Resultados de una consulta a una BD</h1>
+    <h1>Listado de ventas del producto</h1>
     <table>
-        <tr>
+        <thead>
             <th>id cliente</th>
+            <th>Nombre del cliente</th>
             <th>fecha</th>
-        </tr>
-        
+        </thead>
+        <tbody>
         <?php
-
-        //Mostramos los registros
-        while ($row = $result->fetch_array()) {
-            echo '<tr><td>' . $row["id_cliente"] . '</td>';
-            echo '<td>' . $row["fecha"] . '</td></tr>';
-        }
-
+            //Mostramos los registros
+            while ($row = $result->fetch_array()) {
+                echo '<tr><td>' . $row["id_cliente"] . '</td>';
+                echo '<td>' . $row["nombre"] . '</td>' ;
+                echo '<td>' . $row["fecha"] . '</td></tr>';
+            }
         ?>
-
+        </tbody>
     </table>
     </body>
 </html>
