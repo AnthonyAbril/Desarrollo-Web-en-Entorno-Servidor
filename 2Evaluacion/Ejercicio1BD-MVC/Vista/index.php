@@ -1,11 +1,8 @@
 <?php
     //Conexion con la base
-    include 'conexion.php';
-    $conexion = conexion();
+    include '../Modelo/conexion.php';
     // Componemos la sentencia SQL
-    $ssql = "SELECT * FROM productos ORDER BY nombre ASC";
-    // Ejecutamos la sentencia SQL
-    $result = $conexion->query($ssql);
+    $result = conexion("SELECT * FROM productos ORDER BY nombre ASC");
 ?>
 
 <!DOCTYPE html>

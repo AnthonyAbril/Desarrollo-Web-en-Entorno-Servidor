@@ -1,21 +1,15 @@
 <?php
     //Conexion con la base
-    include 'conexion.php';
-    $conexion = conexion();
-    
+    include '../Modelo/conexion.php';
+
     // Recibimos los datos del formulario o método alternativo
     $productoSeleccionado = isset($_POST['productos']) ? $_POST['productos'] : '*';
 
-    $ssql = "SELECT `compras`.id_cliente,`clientes`.nombre,`compras`.fecha 
+    $result =  conexion("SELECT `compras`.id_cliente,`clientes`.nombre,`compras`.fecha 
     FROM `compras` 
     INNER JOIN `clientes` ON `compras`.id_cliente = `clientes`.id_cliente 
     WHERE `id_producto`=$productoSeleccionado 
-    ORDER BY `id_cliente` ASC, `fecha` DESC";
-
-    echo $ssql;
-
-    // Ejecutamos la sentencia SQL
-    $result = $conexion->query($ssql);
+    ORDER BY `id_cliente` ASC, `fecha` DESC");
 ?>
 
 <!DOCTYPE html>

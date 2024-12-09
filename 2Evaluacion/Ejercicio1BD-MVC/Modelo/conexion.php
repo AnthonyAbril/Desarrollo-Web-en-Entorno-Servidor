@@ -1,6 +1,6 @@
 <?php
 
-function conexion() {
+function conexion($consulta) {
     $mysqli_conexion = new mysqli("127.0.0.1", "phpmyadmin", "1234", "tienda");
     
     if ($mysqli_conexion->connect_errno) {
@@ -8,7 +8,8 @@ function conexion() {
         exit;
     }
     
-    return $mysqli_conexion;
+    // Ejecutamos la sentencia SQL
+    return $mysqli_conexion->query($consulta);
 }
 
 ?>
