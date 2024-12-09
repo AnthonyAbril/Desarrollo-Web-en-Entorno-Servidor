@@ -3,7 +3,7 @@
     include 'conexion.php';
     $conexion = conexion();
     // Componemos la sentencia SQL
-    $ssql = "SELECT * FROM productos";
+    $ssql = "SELECT * FROM productos ORDER BY nombre ASC";
     // Ejecutamos la sentencia SQL
     $result = $conexion->query($ssql);
 ?>
