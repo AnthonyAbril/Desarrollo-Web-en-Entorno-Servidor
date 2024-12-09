@@ -6,7 +6,9 @@ class Producto{
     public string $descripcion;
     public float $precio; 
     
-    
+    public static function listarProductos(){
+        
+    }
 }
 
 ?>
