@@ -5,9 +5,17 @@ class conexionBD{
     private $database = "tienda";
     private $user = "phpmyadmin";
     private $password = "1234";
+    private $conexion;
 
     public static function conectar(){
-        $conexion = $this;
+        try{
+            $this->conexion = new mysqli($hostname,$user,$password,$database);
+        }catch (PDOException $error){
+            echo "Error" . $error->getMessage();
+            die();
+        }
+
+        return $this -> conexion;
     }
 
     function conexion($consulta) {
