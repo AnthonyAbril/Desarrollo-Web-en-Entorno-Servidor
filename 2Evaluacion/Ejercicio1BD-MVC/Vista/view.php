@@ -1,10 +1,3 @@
-<?php
-    //Conexion con la base
-    include '../Modelo/conexion.php';
-    // Componemos la sentencia SQL
-    $result = conexion("SELECT * FROM productos ORDER BY nombre ASC");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +12,8 @@
             <select name="productos" id="productos">
                 <?php
                     //recorre los registros
-                    while ($row = $result->fetch_array()) {
-                        echo '<option value="' . $row["id_producto"] . '">' . $row["nombre"] . '</option>';
+                    foreach ($productos as $producto) {
+                        echo '<option value="' . $productos["id_producto"] . '">' . $productos["nombre"] . '</option>';
                     }
                 ?>
             </select>

@@ -1,12 +1,7 @@
 <?php
 
-class Producto{
-    private int $id_producto;
-    public string $nombre;
-    public string $descripcion;
-    public float $precio; 
-    
-    public static function listarProductos(){
+class Ventas{
+    public static function listarVentas($productoSeleccionado){
         $db = new Db();  // Creamos un objeto para usar nuestra capa de abstracción
 
         // Conectamos con la BD a través de nuestra capa de abstracción
@@ -14,12 +9,16 @@ class Producto{
 
         // Lanzamos la consulta a través de nuestra capa de abstracción.
         // Nos devolverá directamente un array estándar de PHP.
-        $productos = $db->dataQuery("SELECT * FROM productos ORDER BY nombre ASC");
+        $ventas = $db->dataQuery("SELECT `compras`.id_cliente,`clientes`.nombre,`compras`.fecha 
+        FROM `compras` 
+        INNER JOIN `clientes` ON `compras`.id_cliente = `clientes`.id_cliente 
+        WHERE `id_producto`=$productoSeleccionado
+        ORDER BY `id_cliente` ASC, `fecha` DESC");
 
         // Cerramos la conexión con la BD
         $db->closeConnection();
 
-        return $productos;
+        return $ventas;
     }
 }
 

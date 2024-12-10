@@ -1,15 +1,8 @@
 <?php
-    //Conexion con la base
-    include '../Modelo/conexion.php';
-
     // Recibimos los datos del formulario o método alternativo
     $productoSeleccionado = isset($_POST['productos']) ? $_POST['productos'] : '*';
 
-    $result =  conexion("SELECT `compras`.id_cliente,`clientes`.nombre,`compras`.fecha 
-    FROM `compras` 
-    INNER JOIN `clientes` ON `compras`.id_cliente = `clientes`.id_cliente 
-    WHERE `id_producto`=$productoSeleccionado 
-    ORDER BY `id_cliente` ASC, `fecha` DESC");
+    $ventasProducto =  Ventas::listarVentas($productoSeleccionado);
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +23,10 @@
         <tbody>
         <?php
             //Mostramos los registros
-            while ($row = $result->fetch_array()) {
-                echo '<tr><td>' . $row["id_cliente"] . '</td>';
-                echo '<td>' . $row["nombre"] . '</td>' ;
-                echo '<td>' . $row["fecha"] . '</td></tr>';
+            foreach ($ventasProducto as $venta) {
+                echo '<tr><td>' . $venta["id_cliente"] . '</td>';
+                echo '<td>' . $venta["nombre"] . '</td>' ;
+                echo '<td>' . $venta["fecha"] . '</td></tr>';
             }
         ?>
         </tbody>
