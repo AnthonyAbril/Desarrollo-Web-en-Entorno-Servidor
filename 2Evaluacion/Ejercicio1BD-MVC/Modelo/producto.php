@@ -9,6 +9,8 @@ class Producto{
     public static function listarProductos(){
         $db = new Db();  // Creamos un objeto para usar nuestra capa de abstracción
 
+        $conexion = conexionBD::conectar();
+
         // Conectamos con la BD a través de nuestra capa de abstracción
         $db->createConnection("172.0.0.1","phpmyadmin","1234","tienda");
 
