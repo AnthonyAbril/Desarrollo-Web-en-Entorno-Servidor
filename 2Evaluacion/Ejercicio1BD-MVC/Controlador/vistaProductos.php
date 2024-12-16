@@ -1,6 +1,5 @@
 <?php
 echo "inicia pagina<br>";
-include("../Modelo/db.php");
 include("../Modelo/producto.php");
     include("../Modelo/ventas.php");
 echo "modelo incluido<br>";

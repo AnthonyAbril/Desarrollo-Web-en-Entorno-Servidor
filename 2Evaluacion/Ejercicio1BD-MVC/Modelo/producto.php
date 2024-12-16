@@ -1,19 +1,23 @@
 <?php
 
+include_once "db.php";
+
 class Producto{
     private int $id_producto;
     public string $nombre;
     public string $descripcion;
     public float $precio; 
-    
+    /*
     public static function listarProductos(){
+
         $db = new Db();  // Creamos un objeto para usar nuestra capa de abstracción
 
-        $conexion = conexionBD::conectar();
+        //$conexion = conexionBD::conectar();
 
         // Conectamos con la BD a través de nuestra capa de abstracción
         $db->createConnection("172.0.0.1","phpmyadmin","1234","tienda");
 
+        echo "crea conexion db<br>";
         // Lanzamos la consulta a través de nuestra capa de abstracción.
         // Nos devolverá directamente un array estándar de PHP.
         $productos = $db->dataQuery("SELECT * FROM productos ORDER BY nombre ASC");
@@ -22,6 +26,22 @@ class Producto{
         $db->closeConnection();
 
         return $productos;
+    }
+    */
+    public static function listarProductos(){
+        $conexion = conexionBD::conectar();
+
+        $sql = "SELECT id_producto, nombre FROM productos ORDER BY nombre";
+        $resultado = $conexion->query($sql);
+
+        if($resultado) {
+            return $resultado->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return [];
+        }
+
+        conexionBD::cerrarConexion($conexion);
+      
     }
 }
 
