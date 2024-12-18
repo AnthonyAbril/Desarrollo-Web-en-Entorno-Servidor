@@ -13,7 +13,7 @@
                 <?php
                     //recorre los registros
                     foreach ($productos as $producto) {
-                        echo '<option value="' . $productos["id_producto"] . '">' . $productos["nombre"] . '</option>';
+                        echo '<option value="' . $producto["id_producto"] . '">' . $producto["nombre"] . '</option>';
                     }
                 ?>
             </select>

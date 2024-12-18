@@ -1,6 +1,6 @@
 <?php
 
-include_once "db.php";
+include "conexionBD.php";
 
 class Producto{
     private int $id_producto;
@@ -31,7 +31,7 @@ class Producto{
     public static function listarProductos(){
         $conexion = conexionBD::conectar();
 
-        $sql = "SELECT id_producto, nombre FROM productos ORDER BY nombre";
+        $sql = "SELECT * FROM productos ORDER BY nombre ASC";
         $resultado = $conexion->query($sql);
 
         if($resultado) {

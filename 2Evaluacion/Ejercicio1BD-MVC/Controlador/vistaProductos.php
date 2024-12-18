@@ -1,11 +1,11 @@
 <?php
 echo "inicia pagina<br>";
 include("../Modelo/producto.php");
-    include("../Modelo/ventas.php");
+include("../Modelo/ventas.php");
 echo "modelo incluido<br>";
 
 //codigo para gestiones necesarias
-$productos = producto::listarProductos();
+$productos = Producto::listarProductos();
 $ventasProducto = [];
 $productoSeleccionado = "";
 
