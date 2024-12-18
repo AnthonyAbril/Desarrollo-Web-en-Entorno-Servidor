@@ -8,9 +8,7 @@ class conexionBD {
     private static $password = "1234";
 
     public static function conectar(){
-        echo "entra a conectar<br>";    
         try {
-            echo "intentar conectar<br>";
             $conexion = new mysqli(self::$hostname, self::$user, self::$password, self::$database);    
             
         } catch (mysqli_sql_exception $error) {
