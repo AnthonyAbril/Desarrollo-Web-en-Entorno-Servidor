@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>notas</title>
 </head>
 <body>
     <ul>
-        <li><a href="controller/controller.php">Login</a></li>
+    <?php 
+    foreach($notas as $nota){
+
+        //Crea una opcion por cada producto
+        echo '<li>'.$nota['Nota'].'</li>';
+    }
+    ?>
     </ul>
 </body>
 </html>

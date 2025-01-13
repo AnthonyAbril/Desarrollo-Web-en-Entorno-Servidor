@@ -1,5 +1,5 @@
 <?php
-include_once '../model/user.php';
+/*include_once '../model/user.php';
 include_once '../../config/destroySesion.php';
 
 session_start();
