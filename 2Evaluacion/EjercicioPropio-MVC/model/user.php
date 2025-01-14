@@ -7,11 +7,11 @@ class User {
     public string $nombre;
     public string $password;
 
-    public static function listarNotas($UserID){
+    public static function listarNotas($username){
         $conexion = conexionBD::conectar();
 
-        $sql = 'SELECT * FROM notas WHERE UserID = (select UserID from usuarios where Username = "'.$UserID.'");';
-        echo $sql;
+        $sql = 'SELECT * FROM notas WHERE UserID = (select UserID from usuarios where Username = "'.$username.'");';
+
         $resultado = $conexion->query($sql);
 
         if($resultado) {
@@ -31,10 +31,26 @@ class User {
         
         if($resultado && $resultado->num_rows > 0) {
 
-            return true;
+            return $resultado;
         }
 
-        return false;
+        return 0;
+    }
+
+    public static function añadirNota($userID, $note, $id){
+        $conexion = conexionBD::conectar();
+
+        $sql = 'INSERT INTO `notas` (`UserID`, `NotaID`, `Nota`, `Fecha`) VALUES ('.$userID.', '.$id.', '.$note.', CURRENT_TIMESTAMP);';
+
+        $resultado = $conexion->query($sql);
+    }
+
+    public static function actualizarNota($note, $id){
+        $conexion = conexionBD::conectar();
+
+        $sql = 'UPDATE `notas` SET `Nota` = "'.$note.'" WHERE `notas`.`NotaID` = '.$id.';';
+
+        $resultado = $conexion->query($sql);
     }
 }
 ?>
