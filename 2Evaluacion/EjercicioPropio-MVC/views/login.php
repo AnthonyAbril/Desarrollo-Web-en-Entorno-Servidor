@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
+    <title>Login</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="../controller/auth.php" method="POST">
+        <input type="hidden" name="action" value="login"> 
         <label>Username</label>
         <input type="text" name="username">
         <br>
         <label>Password</label>
         <input type="text" name="password">
         <br>
+        <label class="recordar">Recordarme</label>
         <input type="submit">
     </form>
+
+    <div class="error">
+    <?php
+        if(isset($_GET['error']) && $_GET['error']==1){
+            echo '<p>Contraseña o Usuario incorrecto</p>';
+        }
+    ?>
+    </div>
 </body>
 </html>

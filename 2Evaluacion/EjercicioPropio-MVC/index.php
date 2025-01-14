@@ -7,7 +7,7 @@
 </head>
 <body>
     <ul>
-        <li><a href="controller/controller.php">Login</a></li>
+        <li><a href="views/login.php">Login</a></li>
     </ul>
 </body>
 </html>

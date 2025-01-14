@@ -10,8 +10,8 @@ class User {
     public static function listarNotas($UserID){
         $conexion = conexionBD::conectar();
 
-        $sql = 'SELECT * FROM notas WHERE UserID = '.$UserID.' ;';
-
+        $sql = 'SELECT * FROM notas WHERE UserID = (select UserID from usuarios where Username = "'.$UserID.'");';
+        echo $sql;
         $resultado = $conexion->query($sql);
 
         if($resultado) {
@@ -26,14 +26,15 @@ class User {
         $esValido = false;
 
         $sql = 'SELECT UserID FROM usuarios WHERE Username = "'.$username.'" AND Password = "'.$pw.'" LIMIT 1;';
-
+        
         $resultado = $conexion->query($sql);
+        
+        if($resultado && $resultado->num_rows > 0) {
 
-        if($resultado) {
-            return $resultado->fetch_assoc();
-        } else {
-            return null;
+            return true;
         }
+
+        return false;
     }
 }
 ?>

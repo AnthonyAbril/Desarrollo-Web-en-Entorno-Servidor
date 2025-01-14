@@ -1,3 +1,20 @@
+<?php
+session_start(); 
+
+require_once '../model/user.php'; 
+
+if (!isset($_SESSION['username'])) { 
+    header('Location: login.php'); 
+    exit; 
+} 
+if (isset($_GET['cerrar'])) { 
+    session_destroy();
+    header('Location: login.php'); 
+    exit; 
+} 
+
+$notes = user::listarNotas($_SESSION['username']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +25,10 @@
 <body>
     <ul>
     <?php 
-    foreach($notas as $nota){
+    foreach($notes as $note){
 
         //Crea una opcion por cada producto
-        echo '<li>'.$nota['Nota'].'</li>';
+        echo '<li>'.$note['Nota'].'</li>';
     }
     ?>
     </ul>
