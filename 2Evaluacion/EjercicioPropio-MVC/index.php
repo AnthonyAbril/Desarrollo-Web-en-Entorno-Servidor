@@ -7,8 +7,8 @@
 </head>
 <body>
     <ul>
-        <li><a href="views/login.php">Login</a></li>
-        <li><a href="views/register.php">Register</a></li>
+        <li><a href="controller/auth.php?form=login">Login</a></li>
+        <li><a href="controller/auth.php?form=register">Register</a></li>
     </ul>
 </body>
 </html>

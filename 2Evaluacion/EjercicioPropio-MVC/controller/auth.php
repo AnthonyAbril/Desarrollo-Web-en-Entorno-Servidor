@@ -4,7 +4,13 @@ session_start();
 include "../model/conexionBD.php";
 include "../model/user.php";
 
-$UserID = user::verificarUsuario($_POST['username'], $_POST['password']);
+if(isset($_POST["username"], $_POST["password"])){
+    //si se ha enviado el username y la contraseña
+
+    $UserID = user::verificarUsuario($_POST['username'], $_POST['password']);   //guardamos el userid si tiene
+}
+
+$tipo = $_GET["form"];  //recibe el tipo de formulario
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])){
     //si el metodo es un POST
@@ -13,15 +19,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])){
         //si se ha enviado el action y este es register
         
         if ($UserID==0) { 
-
             //si la cuenta es valida
 
             user::crearCuenta($_POST['username'], $_POST['password']);//crear cuenta
-
-            header('Location: ../views/login.php'); //entra al login
-        } else { 
-            //si no es valida
-            header('Location: ../views/register.php?error=1'); //vuelve a registrarse con error
+            
+            $tipo = "login";//entra en login
+        } else {
+            $_GET["error"] = 1;
+            $tipo = "register";//entra en login
         } 
     } elseif ($_POST['action'] === 'login') { 
         //si se ha enviado el action y este es login
@@ -32,14 +37,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])){
             $_SESSION['username'] = $_POST['username']; //Abre la sesion
             $_SESSION['userid'] = $UserID;
 
-            //se envia a la pagina
-            header('Location: ../views/notas.php'); 
+            //se envia al controlador de notas
+            header('Location: notas.php'); 
         } else { 
 
             //vuelve a la pagina de login con error
-            header('Location: ../views/login.php?error=1');
+            $_GET["error"] = 1;
+            $tipo = "login";//entra en login
         } 
     } 
+}
+
+//entra en login o register
+if($tipo == "login"){
+    include('../views/login.php');  //incluye la vista
+}else if($tipo == "register"){
+    include('../views/register.php');  //incluye la vista
 }
 
 ?>

@@ -17,7 +17,7 @@
         <input type="submit">
     </form>
 
-    <a href="login.php">Login</a>
+    <a href="?form=login">Login</a>
 
     <div class="error">
     <?php
