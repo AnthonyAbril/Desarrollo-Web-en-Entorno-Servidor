@@ -11,7 +11,7 @@ class User {
         $conexion = conexionBD::conectar();
 
         $sql = 'SELECT * FROM notas WHERE UserID = (select UserID from usuarios where Username = "'.$username.'");';
-
+        
         $resultado = $conexion->query($sql);
 
         if($resultado) {
@@ -21,17 +21,26 @@ class User {
         }
     }
 
+    public static function crearCuenta($username,$pw){
+        $conexion = conexionBD::conectar();
+
+        $sql = "INSERT INTO `usuarios` (`Username`, `Password`) VALUES ('$username', '$pw');";
+
+        $conexion->query($sql);
+    }
+
     public static function verificarUsuario($username,$pw){
         $conexion = conexionBD::conectar();
-        $esValido = false;
 
         $sql = 'SELECT UserID FROM usuarios WHERE Username = "'.$username.'" AND Password = "'.$pw.'" LIMIT 1;';
         
-        $resultado = $conexion->query($sql)->num_rows;
-        
+        $resultado = $conexion->query($sql);
+
+        $nid = $resultado->fetch_all(MYSQLI_ASSOC)[0]["UserID"];
+
         if($resultado && $resultado > 0) {
 
-            return $resultado;
+            return (int)$nid;
         }
 
         return 0;
@@ -41,7 +50,7 @@ class User {
         $conexion = conexionBD::conectar();
         
         $sql = "INSERT INTO `notas` (`UserID`, `Nota`) VALUES ($userID, \"\");";
-
+        echo $sql;
         $resultado = $conexion->query($sql);
     }
 

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
     <form action="../controller/auth.php" method="POST">
-        <input type="hidden" name="action" value="login"> 
+        <input type="hidden" name="action" value="register"> 
         <label>Username</label>
         <input type="text" name="username">
         <br>
@@ -17,12 +17,12 @@
         <input type="submit">
     </form>
 
-    <a href="register.php">Register</a>
+    <a href="login.php">Login</a>
 
     <div class="error">
     <?php
         if(isset($_GET['error']) && $_GET['error']==1){
-            echo '<p>Contraseña o Usuario incorrecto</p>';
+            echo '<p>Esta cuenta ya existe</p>';
         }
     ?>
     </div>

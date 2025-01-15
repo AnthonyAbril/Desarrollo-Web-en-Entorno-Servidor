@@ -12,9 +12,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if (isset($_POST['action']) && $_POST['action'] == 'register') {
         //si se ha enviado el action y este es register
         
-        if ($UserID!=0) { 
+        if ($UserID==0) { 
 
             //si la cuenta es valida
+
+            user::crearCuenta($_POST['username'], $_POST['password']);//crear cuenta
+
             header('Location: ../views/login.php'); //entra al login
         } else { 
             //si no es valida
@@ -28,13 +31,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $_SESSION['username'] = $_POST['username']; //Abre la sesion
             $_SESSION['userid'] = $UserID;
-
-            if (isset($_POST['recordarme'])) { 
-                //si hay recuerdame
-                //setcookie('username', $_POST['username'], time() + 86400, '/','localhost'); 
-            } else {
-                //setcookie('username', "", time()-60, '/','localhost');
-            }
 
             //se envia a la pagina
             header('Location: ../views/notas.php'); 

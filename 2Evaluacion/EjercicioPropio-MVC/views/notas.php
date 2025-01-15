@@ -68,7 +68,7 @@ $notes = user::listarNotas($_SESSION['username']);
     }
 </style>
 <body>
-    <h1>Bienvenid@, <?= htmlspecialchars($_SESSION['username']) ?></h1> 
+    <h1>Bienvenid@, <?= htmlspecialchars($_SESSION['username']) . htmlspecialchars($_SESSION['userid'])?></h1> 
     <a href="?cerrar=1">Cerrar Sesión</a> 
     <div>
     <?php 
@@ -84,6 +84,7 @@ $notes = user::listarNotas($_SESSION['username']);
         </form>';
     }
 
+    //Boton de añadir nota
     echo '<form action="../controller/notas.php" method="POST" class="sumar">
         <button type="submit" name="action" value="añadir">+</button>
     </form>';
