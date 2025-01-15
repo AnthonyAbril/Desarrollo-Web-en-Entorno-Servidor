@@ -8,11 +8,19 @@ if (!isset($_SESSION['username'])) {
 } 
  
 if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
-    if (isset($_POST['note'])) { 
-        user::actualizarNota($_POST['note'], $_POST['id']); 
-        //user::añadirNota($_SESSION['username'], $_POST['note'], $_POST['id']); 
-        header('Location: ../views/notas.php'); 
-    } 
+    if ($_POST['action']==="actualizar"){
+        if (isset($_POST['note'])) { 
+            user::actualizarNota($_POST['note'], $_POST['id']); 
+            //user::añadirNota($_SESSION['username'], $_POST['note'], $_POST['id']); 
+        } 
+    }elseif($_POST['action']==="borrar"){
+        if (isset($_POST['note'])) { 
+            user::borrarNota($_POST['id']); 
+            //user::añadirNota($_SESSION['username'], $_POST['note'], $_POST['id']); 
+        } 
+    }
+    
+    //header('Location: ../views/notas.php'); 
 } 
 ?> 
  

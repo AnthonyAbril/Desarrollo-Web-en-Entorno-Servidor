@@ -62,8 +62,8 @@ echo $_POST["id"];
             <input type="hidden" name="id" value='.htmlspecialchars($note['NotaID']).'> 
             <p>'.htmlspecialchars($note['Fecha']).'</p>
             <textarea name="note" required>'.htmlspecialchars($note['Nota']).'</textarea> 
-            <button type="submit">Actualizar</button>
-            <button type="submit">Borrar</button>
+            <button type="submit" name="action" value="actualizar">Actualizar</button>
+            <button type="submit" name="action" value="borrar">Borrar</button>
         </form>';
     }
     ?>

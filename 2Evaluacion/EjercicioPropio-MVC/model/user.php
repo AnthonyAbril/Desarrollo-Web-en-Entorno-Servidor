@@ -52,5 +52,13 @@ class User {
 
         $resultado = $conexion->query($sql);
     }
+
+    public static function borrarNota($id){
+        $conexion = conexionBD::conectar();
+
+        $sql = 'DELETE FROM `notas` WHERE `notas`.`NotaID` = '.$id.';';
+        echo $sql;
+        $resultado = $conexion->query($sql);
+    }
 }
 ?>
