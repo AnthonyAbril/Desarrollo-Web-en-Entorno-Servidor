@@ -8,15 +8,21 @@ if (!isset($_SESSION['username'])||!isset($_SESSION['userid'])) {
 } 
  
 if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+
     if ($_POST['action']==="actualizar"){
+
         if (isset($_POST['note'])) { 
             user::actualizarNota($_POST['note'], $_POST['id']); 
         } 
+        
     }elseif($_POST['action']==="borrar"){
+
         if (isset($_POST['note'])) { 
             user::borrarNota($_POST['id']); 
         } 
+
     }elseif($_POST['action']==="añadir"){
+
         user::añadirNota($_SESSION['userid']);
     }
     

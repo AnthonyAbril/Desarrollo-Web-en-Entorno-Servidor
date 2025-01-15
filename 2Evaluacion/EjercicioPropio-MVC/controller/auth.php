@@ -6,10 +6,10 @@ include "../model/user.php";
 
 $UserID = user::verificarUsuario($_POST['username'], $_POST['password']);
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])){
     //si el metodo es un POST
 
-    if (isset($_POST['action']) && $_POST['action'] == 'register') {
+    if ($_POST['action'] == 'register') {
         //si se ha enviado el action y este es register
         
         if ($UserID==0) { 
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //si no es valida
             header('Location: ../views/register.php?error=1'); //vuelve a registrarse con error
         } 
-    } elseif (isset($_POST['action']) && $_POST['action'] === 'login') { 
+    } elseif ($_POST['action'] === 'login') { 
         //si se ha enviado el action y este es login
         
         if ($UserID!=0) { 
