@@ -24,9 +24,17 @@ $notes = user::listarNotas($_SESSION['username']);
     <title>notas</title>
 </head>
 <style>
+    button{
+        background-color: #ffdb9a96;
+        border: none;
+        margin-top: 5px;
+        border-radius: 5px;
+        padding: 5px 0;
+    }
+
     div{
         width: 100%; /* Puedes ajustarlo a un ancho específico, como 600px */
-        height: 70vh;
+        height: 80vh;
         display: flex;
         overflow-x: auto; /* Habilita desplazamiento horizontal */
         align-items: center;
@@ -35,6 +43,7 @@ $notes = user::listarNotas($_SESSION['username']);
     form{
         background-color: orange;
         width: 300px;
+        height: 70vh;
         display: flex;
         flex-direction: column;
         padding: 10px;
@@ -55,6 +64,7 @@ $notes = user::listarNotas($_SESSION['username']);
     .sumar button{
         width: 100px;
         height: 100px;
+        font-size: 50px;
     }
 </style>
 <body>
