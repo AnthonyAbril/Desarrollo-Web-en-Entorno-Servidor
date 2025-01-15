@@ -15,9 +15,6 @@ if (isset($_GET['cerrar'])) {
 
 $notes = user::listarNotas($_SESSION['username']);
 
-echo $_POST["note"];
-echo $_POST["id"];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +29,7 @@ echo $_POST["id"];
         height: 70vh;
         display: flex;
         overflow-x: auto; /* Habilita desplazamiento horizontal */
+        align-items: center;
     }
 
     form{
@@ -49,9 +47,18 @@ echo $_POST["id"];
         height: fit-content;
         height: 100%;
     }
+
+    .sumar{
+        width: 100px;
+        height: 100px;
+    }
+    .sumar button{
+        width: 100px;
+        height: 100px;
+    }
 </style>
 <body>
-    <p>Bienvenid@, <?= htmlspecialchars($_SESSION['username']) ?></p> 
+    <h1>Bienvenid@, <?= htmlspecialchars($_SESSION['username']) ?></h1> 
     <a href="?cerrar=1">Cerrar Sesión</a> 
     <div>
     <?php 
@@ -61,11 +68,15 @@ echo $_POST["id"];
         echo '<form action="../controller/notas.php" method="POST">
             <input type="hidden" name="id" value='.htmlspecialchars($note['NotaID']).'> 
             <p>'.htmlspecialchars($note['Fecha']).'</p>
-            <textarea name="note" required>'.htmlspecialchars($note['Nota']).'</textarea> 
+            <textarea name="note">'.htmlspecialchars($note['Nota']).'</textarea> 
             <button type="submit" name="action" value="actualizar">Actualizar</button>
             <button type="submit" name="action" value="borrar">Borrar</button>
         </form>';
     }
+
+    echo '<form action="../controller/notas.php" method="POST" class="sumar">
+        <button type="submit" name="action" value="añadir">+</button>
+    </form>';
     ?>
     </div>
 </body>

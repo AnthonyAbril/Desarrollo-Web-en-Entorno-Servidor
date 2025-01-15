@@ -27,9 +27,9 @@ class User {
 
         $sql = 'SELECT UserID FROM usuarios WHERE Username = "'.$username.'" AND Password = "'.$pw.'" LIMIT 1;';
         
-        $resultado = $conexion->query($sql);
+        $resultado = $conexion->query($sql)->num_rows;
         
-        if($resultado && $resultado->num_rows > 0) {
+        if($resultado && $resultado > 0) {
 
             return $resultado;
         }
@@ -37,10 +37,10 @@ class User {
         return 0;
     }
 
-    public static function añadirNota($userID, $note, $id){
+    public static function añadirNota($userID){
         $conexion = conexionBD::conectar();
-
-        $sql = 'INSERT INTO `notas` (`UserID`, `NotaID`, `Nota`, `Fecha`) VALUES ('.$userID.', '.$id.', '.$note.', CURRENT_TIMESTAMP);';
+        
+        $sql = "INSERT INTO `notas` (`UserID`, `Nota`) VALUES ($userID, \"\");";
 
         $resultado = $conexion->query($sql);
     }

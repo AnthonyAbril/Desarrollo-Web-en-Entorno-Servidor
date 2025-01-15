@@ -4,6 +4,7 @@ session_start();
 include "../model/conexionBD.php";
 include "../model/user.php";
 
+$UserID = user::verificarUsuario($_POST['username'], $_POST['password']);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //si el metodo es un POST
@@ -11,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if (isset($_POST['action']) && $_POST['action'] == 'register') {
         //si se ha enviado el action y este es register
         
-        if (user::verificarUsuario($_POST['username'], $_POST['password'])!=0) { 
+        if ($UserID!=0) { 
 
             //si la cuenta es valida
             header('Location: ../views/login.php'); //entra al login
@@ -22,10 +23,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     } elseif (isset($_POST['action']) && $_POST['action'] === 'login') { 
         //si se ha enviado el action y este es login
         
-        if (user::verificarUsuario($_POST['username'], $_POST['password'])!=0) { 
+        if ($UserID!=0) { 
             //si el usuario existe con su contraseña
 
             $_SESSION['username'] = $_POST['username']; //Abre la sesion
+            $_SESSION['userid'] = $UserID;
 
             if (isset($_POST['recordarme'])) { 
                 //si hay recuerdame
