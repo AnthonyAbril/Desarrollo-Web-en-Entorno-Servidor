@@ -5,8 +5,8 @@ class conexionBD {
     //datos para la conexion con la BBDD
     private static $hostname = "127.0.0.1";
     private static $database = "tienda";
-    private static $user = "root";
-    private static $password = "";
+    private static $user = "phpmyadmin";
+    private static $password = "1234";
 
     public static function conectar(){
         try {

@@ -4,19 +4,22 @@ session_start();    //inicia la sesion
 include "../model/conexionBD.php";  //incluye la conexion a BD
 include "../model/user.php";    //incluye el modelo de usuario
 
-if(isset($_POST["username"], $_POST["password"])){
-//si se ha enviado el username y la contraseña
 
-    $UserID = user::verificarUsuario($_POST['username'], $_POST['password']);   //guardamos el userid si tiene, sino guarda 0
-}
-
+    //SI NO SE ACLARA EL FORMULARIO
 if(!isset($_GET["form"])){
 //si no se ha mandado el tipo de formulario
     $_GET["form"] = "login";  //se establece en login por defectio
 }
 
+    //UNA VEZ SE ENVIA EL FORMULARIO
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])){
 //si el metodo es un POST
+
+    if(isset($_POST["username"], $_POST["password"])){
+    //si se ha enviado el username y la contraseña
+    
+        $UserID = user::verificarUsuario($_POST['username'], $_POST['password']);   //guardamos el userid si tiene, sino guarda 0
+    }
 
     if ($_POST['action'] == 'register') {
     //si se ha enviado el action y este es register
@@ -51,6 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])){
         } 
     } 
 }
+
 
 //entra en login o register
 if($_GET["form"] == "login"){
