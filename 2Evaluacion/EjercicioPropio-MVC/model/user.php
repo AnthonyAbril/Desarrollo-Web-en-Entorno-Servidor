@@ -7,26 +7,12 @@ class User {
     public string $nombre;
     public string $password;
 
-    public static function listarNotas($username){
-        $conexion = conexionBD::conectar();
-
-        $sql = 'SELECT * FROM notas WHERE UserID = (select UserID from usuarios where Username = "'.$username.'");';
-        
-        $resultado = $conexion->query($sql);
-
-        if($resultado) {
-            return $resultado->fetch_all(MYSQLI_ASSOC);
-        } else {
-            return [];
-        }
-    }
-
     public static function crearCuenta($username,$pw){
         $conexion = conexionBD::conectar();
 
         $sql = "INSERT INTO `usuarios` (`Username`, `Password`) VALUES ('$username', '$pw');";
 
-        $conexion->query($sql);
+        $conexion->query($sql);    //realiza la consulta
     }
 
     public static function verificarUsuario($username,$pw){
@@ -34,40 +20,19 @@ class User {
 
         $sql = 'SELECT UserID FROM usuarios WHERE Username = "'.$username.'" AND Password = "'.$pw.'" LIMIT 1;';
         
-        $resultado = $conexion->query($sql);
+        $resultado = $conexion->query($sql);//hace la consulta
 
-        $nid = $resultado->fetch_all(MYSQLI_ASSOC)[0]["UserID"];
+        $resultado = $resultado->fetch_all(MYSQLI_ASSOC);//la pasa a array
 
-        if($resultado && $resultado > 0) {
-
-            return (int)$nid;
+        if(count($resultado)>0){
+        //si encuentra un usuario con ese username y password (array vacio)
+        
+            $nid = $resultado[0]["UserID"]; //extrae su id
+            
+            return (int)$nid;//lo manda
         }
 
-        return 0;
-    }
-
-    public static function añadirNota($userID){
-        $conexion = conexionBD::conectar();
-        
-        $sql = "INSERT INTO `notas` (`UserID`, `Nota`) VALUES ($userID, \"\");";
-        echo $sql;
-        $resultado = $conexion->query($sql);
-    }
-
-    public static function actualizarNota($note, $id){
-        $conexion = conexionBD::conectar();
-
-        $sql = 'UPDATE `notas` SET `Nota` = "'.$note.'" WHERE `notas`.`NotaID` = '.$id.';';
-
-        $resultado = $conexion->query($sql);
-    }
-
-    public static function borrarNota($id){
-        $conexion = conexionBD::conectar();
-
-        $sql = 'DELETE FROM `notas` WHERE `notas`.`NotaID` = '.$id.';';
-        echo $sql;
-        $resultado = $conexion->query($sql);
+        return 0;//si no, manda 0
     }
 }
 ?>
