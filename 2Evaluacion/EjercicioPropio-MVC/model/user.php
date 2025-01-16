@@ -13,6 +13,8 @@ class User {
         $sql = "INSERT INTO `usuarios` (`Username`, `Password`) VALUES ('$username', '$pw');";
 
         $conexion->query($sql);    //realiza la consulta
+        
+        $conexion->close();
     }
 
     public static function verificarUsuario($username,$pw){
@@ -23,6 +25,8 @@ class User {
         $resultado = $conexion->query($sql);//hace la consulta
 
         $resultado = $resultado->fetch_all(MYSQLI_ASSOC);//la pasa a array
+        
+        $conexion->close();
 
         if(count($resultado)>0){
         //si encuentra un usuario con ese username y password (array vacio)

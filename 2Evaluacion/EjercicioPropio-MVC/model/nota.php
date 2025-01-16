@@ -10,6 +10,8 @@ class nota{
         $sql = 'SELECT * FROM notas WHERE UserID = (select UserID from usuarios where Username = "'.$username.'");';
         
         $resultado = $conexion->query($sql);    //realiza la consulta
+        
+        $conexion->close();
 
         if($resultado) {
         //si recibe resultado
@@ -25,6 +27,8 @@ class nota{
         $sql = "INSERT INTO `notas` (`UserID`, `Nota`) VALUES ($userID, \"\");";
         
         $resultado = $conexion->query($sql);    //realiza la consulta
+        
+        $conexion->close();
     }
 
     public static function actualizarNota($note, $id){
@@ -33,6 +37,8 @@ class nota{
         $sql = 'UPDATE `notas` SET `Nota` = "'.$note.'" WHERE `notas`.`NotaID` = '.$id.';';
 
         $resultado = $conexion->query($sql);    //realiza la consulta
+
+        $conexion->close();
     }
 
     public static function borrarNota($id){
@@ -41,6 +47,8 @@ class nota{
         $sql = 'DELETE FROM `notas` WHERE `notas`.`NotaID` = '.$id.';';
         
         $resultado = $conexion->query($sql);    //realiza la consulta
+
+        $conexion->close();
     }
 }
 ?>
