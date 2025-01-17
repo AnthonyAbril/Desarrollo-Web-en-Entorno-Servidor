@@ -36,7 +36,7 @@ if(isset($_POST["action"])&&$_POST["action"]=="insertar"){
 
 if(isset($_POST["action"])&&$_POST["action"]=="actualizar"){
     if(isset($_POST["empleadoNom"], $_POST["empleadoApe"])&&$_POST["empleadoNom"]!=""&&$_POST["empleadoApe"]!=""){
-
+        
         Empleado::actualizarEmpleado($_POST["empleadoIDAct"],$_POST["empleadoNom"],$_POST["empleadoApe"],$_POST["empleadoSal"],$_POST["empleadoPue"]);
         echo "empleado actualizado";
     }
