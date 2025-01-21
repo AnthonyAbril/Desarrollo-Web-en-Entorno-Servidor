@@ -19,7 +19,4 @@ if(isset($_POST['producto']) && $_POST['producto']!="") {
     $ventasProducto = producto::seleccionaVentasProducto($productoSeleccionado);    //se saca de la BBDD las ventas del producto seleccionado (CONEXION)
 }
 
-//incluye la vista
-include('../views/showVentasProductos.php');
-
 ?>

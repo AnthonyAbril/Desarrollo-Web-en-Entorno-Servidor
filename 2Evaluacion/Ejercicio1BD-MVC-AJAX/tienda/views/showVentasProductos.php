@@ -30,6 +30,8 @@
         </select>
     </form>
 
+    <div id="caja"></div>
+
     <?php
     //si hay alguna vevnta del producto seleccionado (y si hay producto seleccionado)
     if (count($ventasProducto)>0) {

@@ -9,7 +9,7 @@
     <h1>Gestión de la Tienda</h1>
 
     <ul>
-        <li><a href="controller/ventasProductos.php">Listar ventas por producto</a></li>
+        <li><a href="views/showVentasProductos.php">Listar ventas por producto</a></li>
     </ul>
     
 </body>
