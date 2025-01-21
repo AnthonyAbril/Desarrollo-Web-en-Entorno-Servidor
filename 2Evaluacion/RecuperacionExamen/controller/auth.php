@@ -21,8 +21,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //Abre la sesion
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['Empleadoid'] = $EmpleadoID;
-
-        //se envia al controlador de notas
+        
+        //se envia al controlador de empleados
         header('Location: empleados.php'); 
     } else { 
 
