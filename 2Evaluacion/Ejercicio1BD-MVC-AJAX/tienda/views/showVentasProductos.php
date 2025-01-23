@@ -7,7 +7,7 @@
     <script src="../js/formularios.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body>
+<body onload="getClients();">
     <h1>Lista de Ventas por Producto</h1>
     <form action="" method="post" id="form_select_product">
 
@@ -34,7 +34,7 @@
 
     <?php
     //si hay alguna vevnta del producto seleccionado (y si hay producto seleccionado)
-    if (count($ventasProducto)>0) {
+    if ($ventasProducto && count($ventasProducto)>0) {
         //se crea una tabla con la lista de sus ventas
     ?>
         <table>
