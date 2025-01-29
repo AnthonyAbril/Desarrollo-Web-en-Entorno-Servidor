@@ -4,7 +4,7 @@ include_once "m_conexionDB.php";
 
 class Clientes{
 
-    function ObtenerClientes($id_cliente = null){
+    public static function ObtenerClientes($id_cliente = null){
 
         $conexion = conexionBD::conectar();
 

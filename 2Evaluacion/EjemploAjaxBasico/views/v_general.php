@@ -21,6 +21,6 @@
         <input type="text" name="nombre" id="nombre">
         <button id="btn" onclick="cargar()">Buscar</button>
     </form>
-    <div id="panel"></div>
+    <table id="panel"></table>
 </body>
 </html>
