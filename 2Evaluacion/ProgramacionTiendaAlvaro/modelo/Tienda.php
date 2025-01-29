@@ -2,34 +2,9 @@
 
 class Tienda {
 
-    // private $conect;
-
-    // function conectar() {
-    //     $conect = new mysqli("127.0.0.1", "root", "", "tienda");
-    
-    //     if ($conect->connect_errno) {
-    //         echo "Error de conexion ".$conect->connect_errno;
-    //         return;
-    //     } else {
-    //         echo "chachi pistachi <br>";
-    //     }
-    
-    //     return $conect;
-    // }
-
-    // function cerrar() {
-
-    //     if ($this->conect) {
-    //         $this->conect->close();
-    //     } else {
-    //         echo "there is no connection up";
-    //     }
-
-    // }
-
     function obtenerClientes() {
 
-        $conect = new mysqli("127.0.0.1", "root", "", "tienda");
+        $conect = new mysqli("127.0.0.1", "phpmyadmin", "1234", "tienda");
 
         $select = "SELECT * FROM clientes";
         $queryClientes = $conect->query($select);
@@ -46,7 +21,7 @@ class Tienda {
     
     function obtenerId() {
 
-        $conect = new mysqli("127.0.0.1", "root", "", "tienda");
+        $conect = new mysqli("127.0.0.1", "phpmyadmin", "1234", "tienda");
 
         $select = "SELECT Id FROM clientes";
         $queryId = $conect->query($select);
@@ -64,7 +39,7 @@ class Tienda {
 
     function actualizarClientes($id_cliente, $nombre, $apellidos, $telefono) {
 
-        $conect = new mysqli("127.0.0.1", "root", "", "tienda");
+        $conect = new mysqli("127.0.0.1", "phpmyadmin", "1234", "tienda");
 
         $update = "UPDATE clientes SET Nombre='$nombre', Apellidos='$apellidos', Telefono='$telefono' WHERE '$id_cliente'= Id";
         $conect->query($update);
@@ -74,7 +49,7 @@ class Tienda {
 
     function meterClientes($nombre, $apellidos, $telefono) {
 
-        $conect = new mysqli("127.0.0.1","root","","tienda");
+        $conect = new mysqli("127.0.0.1", "phpmyadmin", "1234", "tienda");
 
         $insert = "INSERT INTO clientes(Nombre, Apellidos, Telefono) 
         VALUES('$nombre', '$apellidos', '$telefono')";
@@ -86,7 +61,7 @@ class Tienda {
 
     function deleteClientes($id_cliente) {
 
-        $conect = new mysqli("127.0.0.1","root","","tienda");
+        $conect = new mysqli("127.0.0.1", "phpmyadmin", "1234", "tienda");
 
         $queryDelete = "DELETE FROM clientes WHERE Id = '$id_cliente'";
         $conect->query($queryDelete);
@@ -98,7 +73,7 @@ class Tienda {
 
     function obtenerObjetos() {
     
-        $conect = new mysqli("127.0.0.1", "root", "", "tienda");
+        $conect = new mysqli("127.0.0.1", "phpmyadmin", "1234", "tienda");
 
         $select = "SELECT * FROM producto";
         $queryProductos = $conect->query($select);
@@ -117,7 +92,7 @@ class Tienda {
 
     function obtenerHistorialCompra($id_producto) {
 
-        $conect = new mysqli("127.0.0.1", "root", "", "tienda");
+        $conect = new mysqli("127.0.0.1", "phpmyadmin", "1234", "tienda");
     
         $select = "SELECT clientes.nombre, compra.fecha, compra.id_compra
         FROM clientes
