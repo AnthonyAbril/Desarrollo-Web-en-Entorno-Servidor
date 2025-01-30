@@ -109,7 +109,7 @@ function insertarMatricula(){
     peticion.onreadystatechange = function () {
         if (peticion.readyState === 4) {
             if (peticion.status === 200) {
-                // Si la respuesta es un array de clientes
+                // Si la respuesta es un array
                 try {
                     //recibe las cosas
                     respuesta = peticion.responseText;
@@ -125,7 +125,7 @@ function insertarMatricula(){
         }
     };
     
-    peticion.send();
+    peticion.send(datos);
 }
 
 //al cargarse la pagina
