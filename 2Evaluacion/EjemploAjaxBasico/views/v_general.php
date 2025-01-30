@@ -16,11 +16,49 @@
         El controlador hace echo de esta respuesta y AJAX la captura
         mostrandolo finalmente en div de id=panel
     -->
-    <form action="" id="f_clientes" method="POST" >
+    <form action="" id="f_clientes">
         <label>Nombre: </label>
         <input type="text" name="nombre" id="nombre">
         <button id="btn" onclick="cargar()">Buscar</button>
     </form>
     <table id="panel"></table>
+    <div id="formularioModificar">
+        <form action="" >
+            <fieldset>
+                <legend id="titulo">Modificar</legend>
+
+                <label>Nombre: </label>
+                <input type="text" name="nombre" id="nombre">
+                <br>
+                <label>Apellido: </label>
+                <input type="text" name="nombre" id="nombre">
+                <br>
+                <label>Telefono: </label>
+                <input type="text" name="nombre" id="nombre">
+                <br>
+                <button id="btn" onclick="cargar()">Buscar</button>
+            </fieldset>
+        </form>
+    </div>
+
+    
+    <div id="formularioInsertar">
+        <form action="" id="f_introducir">
+            <fieldset>
+                <legend id="titulo">Insertar</legend>
+
+                <label>Nombre: </label>
+                <input type="text" name="nombre" id="nombreInsertar">
+                <br>
+                <label>Apellido: </label>
+                <input type="text" name="apellido" id="apellidoInsertar">
+                <br>
+                <label>Telefono: </label>
+                <input type="text" name="tel" id="telInsertar">
+                <br>
+                <button id="btn" onclick="insertar()">añadir cliente</button>
+            </fieldset>
+        </form>
+    </div>
 </body>
 </html>
