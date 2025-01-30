@@ -38,7 +38,7 @@ HECHO   3. Consultar las matrículas (HTML).
         <!-- <option value="101">Matemáticas</option> -->
     </select>
 
-    <button id="matricular">Matricular</button>
+    <button id="matricular" onclick="insertarMatricula()">Matricular</button>
 
     <h2>Lista de Matrículas</h2>
     <ul id="matriculas-lista">

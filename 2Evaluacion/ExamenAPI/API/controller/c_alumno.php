@@ -48,26 +48,16 @@ if ($_SERVER["REQUEST_METHOD"]=="GET"){
         echo $HTMLtext;
     }
 
-/*
 
-    try {
-        if ($id) {
-            // Si se proporciona un id, obtener un cliente específico
-            echo (Clientes::ObtenerClientes($id));
-        } else {
-            // Si no se proporciona un id, obtener todos los clientes
-            echo (Clientes::ObtenerClientes());
-        }
-    } catch (Exception $e) {
-        echo json_encode(["error" => "Error al procesar la solicitud", "message" => $e->getMessage()]);
-    }
-*/ 
-
+//insertar matricula
 }elseif($_SERVER["REQUEST_METHOD"]=="POST"){
     
-    $body = file_get_contents("php://input");
+    //recibe la matricula a insertar
+    $body = json_decode(file_get_contents("php://input"));
 
+    $respuesta = (Matriculas::InsertarMatricula($body));
 
+    echo $respuesta;
 }
 
 ?>
