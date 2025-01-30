@@ -8,7 +8,7 @@ class Clientes{
 
         $conexion = conexionBD::conectar();
 
-        $sql = "select * from clientes ".($nombre_cliente?"where Nombre like '%$nombre_cliente%'":" ");
+        $sql = "select * from clientes ".($nombre_cliente?"where nombre like '%$nombre_cliente%'":" ");
 
         $resultado = $conexion->query($sql);
 
@@ -20,7 +20,7 @@ class Clientes{
     public static function BorrarCliente($id_cliente){
         $conexion = conexionBD::conectar();
 
-        $sql = "DELETE FROM clientes WHERE `clientes`.`Id` = $id_cliente";
+        $sql = "DELETE FROM clientes WHERE `id_cliente` = $id_cliente";
 
         $resultado = $conexion->query($sql);
 
@@ -32,7 +32,7 @@ class Clientes{
     public static function InsertarCliente($cliente){
         $conexion = conexionBD::conectar();
 
-        $sql = "INSERT INTO `clientes` (`Id`, `Nombre`, `Apellidos`, `Telefono`) VALUES (NULL, '".$cliente['nombre']."', '".$cliente['apellido'].".', '".$cliente['telefono']."');";
+        $sql = "INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellidos`, `telefono`) VALUES (NULL, '".$cliente['nombre']."', '".$cliente['apellido'].".', '".$cliente['telefono']."');";
 
         //$sql = "INSERT INTO `clientes` (`Id`, `Nombre`, `Apellidos`, `Telefono`) VALUES (NULL, 'prueba1', 'prueba11', 'prueba1');";
         

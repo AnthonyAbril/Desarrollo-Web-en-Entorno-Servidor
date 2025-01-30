@@ -105,21 +105,20 @@ function generarTabla(clients) {
         const fila = document.createElement("tr");
 
         const celdaId = document.createElement("td");
-        celdaId.textContent = client.Id;
+        celdaId.textContent = client.id_cliente;
 
         const celdaNombre = document.createElement("td");
-        celdaNombre.textContent = `${client.Nombre} ${client.Apellidos}`;
+        celdaNombre.textContent = `${client.nombre} ${client.apellidos}`;
 
         const celdaModificar = document.createElement("td");
         const botonModificar = document.createElement("button");
         botonModificar.textContent = "Modificar";
-        botonModificar.addEventListener("click", () => crearFormulario(client.Id, "modificar"));
         celdaModificar.appendChild(botonModificar);
 
         const celdaBorrar = document.createElement("td");
         const botonBorrar = document.createElement("button");
         botonBorrar.textContent = "Borrar";
-        botonBorrar.addEventListener("click", () => borrar(client.Id));
+        botonBorrar.addEventListener("click", () => borrar(client.id_cliente));
         celdaBorrar.appendChild(botonBorrar);
 
         fila.appendChild(celdaId);
@@ -132,8 +131,7 @@ function generarTabla(clients) {
 }
 
 // Función para crear formulario dinámico (puedes expandirla)
-function crearFormulario(id, accion) {
-    console.log(`${accion} ${id}`);
+function crearFormulario(id) {
     const form = document.getElementById("formularioModificar");
     form.innerHTML = "";
 

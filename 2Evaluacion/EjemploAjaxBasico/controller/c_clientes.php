@@ -2,11 +2,16 @@
 
 include_once "../model/m_clientes.php";
 
-header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+header("Content-Type: text/html; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Extrae solo el path
+    $uri = parse_url($_SERVER['REQUEST_URI'],  ); // Extrae solo el path
     $partes = explode('/', trim($uri, '/')); // Divide en partes y limpia "/"
     $id = isset($_GET['id']) ? $_GET['id'] : null; // Obtener el 'id' de los parámetros GET
 

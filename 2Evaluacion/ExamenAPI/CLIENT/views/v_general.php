@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Matrículas</title>
+    <script src="../js/ajax.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <!--
+
+HECHO   1. Consultar todo el alumnado del centro (JSON). 
+HECHO   2. Consultar todas las asignaturas del centro (JSON). 
+
+HECHO   3. Consultar las matrículas (HTML). 
+        
+        4. Insertar una matrícula (JSON). 
+        5. Eliminar una matrícula (JSON).
+
+    -->
+
+    <h1>Gestión de Matrículas</h1>
+
+    <!-- Desplegables para elegir alumno y asignatura -->
+    <label for="alumno">Seleccionar Alumno:</label>
+    <select id="alumno">
+        <!-- Rellena los alumnos a partir de una llamada AJAX -->
+        <!-- <option value="1001">Juan Pérez Gómez</option> -->
+    </select>
+
+    <label for="asignatura">Seleccionar Asignatura:</label>
+    <select id="asignatura">
+        <!-- Rellena las asignaturas a partir de una llamada AJAX -->
+        <!-- <option value="101">Matemáticas</option> -->
+    </select>
+
+    <button id="matricular">Matricular</button>
+
+    <h2>Lista de Matrículas</h2>
+    <ul id="matriculas-lista">
+        <!-- Rellena las matrículas a partir de una llamada AJAX -->
+        <!-- 
+            <li>
+                1001 - Juan Pérez Gómez - Matemáticas (2025)
+                <button class="eliminar-matricula" data-nia="1001" data-codigo="101">Eliminar</button>
+            </li>
+        -->
+    </ul>
+
+</body>
+
+</html>

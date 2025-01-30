@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Formularios */
+label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+select:focus, button:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 120px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Sección matrículas */
+h2 {
+    margin-top: 40px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+#matriculas-lista {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#matriculas-lista li {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#matriculas-lista li button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#matriculas-lista li button:hover {
+    background-color: #c0392b;
+}
+
+#matriculas-lista li span {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* MediaQueries */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    label, select, button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    label, select, button {
+        font-size: 0.85rem;
+    }
+
+    #matriculas-lista li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #matriculas-lista li button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
