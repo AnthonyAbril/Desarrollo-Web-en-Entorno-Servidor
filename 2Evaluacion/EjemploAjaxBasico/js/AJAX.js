@@ -3,7 +3,6 @@ let respuesta = "";
 
 let peticion = new XMLHttpRequest();
 
-
 selectClient = document.createElement("select");
 
 //al recibir una respuesta del controlador
@@ -44,10 +43,10 @@ peticion.onreadystatechange = function () {
             let fila = document.createElement("tr");   //creamos una fila
 
             let celdaId = document.createElement("td"); //creamos una celda para el Id
-            celdaId.textContent = `${client.id_cliente}`;    //le da el texto "clienteId"
+            celdaId.textContent = `${client.Id}`;    //le da el texto "clienteId"
 
             let celdaNombre = document.createElement("td"); //creamos una celda para el Nombre
-            celdaNombre.textContent = `${client.nombre} ${client.apellidos}`;    //le añade al texto el nombre y apellido
+            celdaNombre.textContent = `${client.Nombre} ${client.Apellidos}`;    //le añade al texto el nombre y apellido
             
             //añade las celdas a la fila
             fila.appendChild(celdaId);   

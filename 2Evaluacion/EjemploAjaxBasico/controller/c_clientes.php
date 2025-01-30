@@ -7,7 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $body = file_get_contents("php://input");
     
     //echo Producto::insertProduct($body);
-    echo json_encode(Clientes::ObtenerClientes());
+
+    echo json_encode(Clientes::ObtenerClientes($body));
+
     exit;
 }
 

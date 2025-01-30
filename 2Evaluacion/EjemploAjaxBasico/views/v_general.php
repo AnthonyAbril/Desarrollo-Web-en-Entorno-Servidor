@@ -6,7 +6,7 @@
     <title>Ejemplo AJAX</title>
     <script src="../js/AJAX.js"></script>
 </head>
-<body>
+<body onload="cargar();">
     <!--
         La funcionalidad sera la siguiente:
 

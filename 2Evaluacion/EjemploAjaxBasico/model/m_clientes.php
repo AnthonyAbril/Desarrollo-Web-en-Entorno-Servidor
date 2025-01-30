@@ -4,11 +4,11 @@ include_once "m_conexionDB.php";
 
 class Clientes{
 
-    public static function ObtenerClientes($id_cliente = null){
+    public static function ObtenerClientes($nombre_cliente = null){
 
         $conexion = conexionBD::conectar();
 
-        $sql = "select * from clientes";
+        $sql = "select * from clientes ".($nombre_cliente?"where Nombre like '%$nombre_cliente%'":" ");
 
         $resultado = $conexion->query($sql);
 
